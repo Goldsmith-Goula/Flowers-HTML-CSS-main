@@ -14,7 +14,57 @@
 
     <style>
     
+  
+.profile {
+  width: 110px;
+  height: 110px;
+  z-index: 100;
+  position: fixed;
+  top: 20.5%;
+  border-radius: 50%;
+  
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+ 
+}
 
+.profile img {
+  width: 100%;
+  
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+
+
+.card {
+  
+position: fixed;
+  top: 20%;
+  
+  z-index: 100;
+  width: 120px;
+  height: 120px;
+  background: transparent;
+  background-image: conic-gradient(#ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  border-radius: 50%;
+  animation: spin 3s linear infinite;
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.content {
+  position: relative;
+}
       /* Birthday Message Section */
       .birthday-message {
         position: absolute;
@@ -51,7 +101,7 @@
         display: inline-block;
         font-family: 'Dancing Script', cursive;
         color: #fdb9c3;
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         line-height: 1.6;
         min-height: 120px;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -156,14 +206,21 @@
           z-index: 5;
       }
       </style>
-</head>
+</head>  <div class="card">
+   
+  </div>
+  
+  <div class="profile" id="profile-circle"> <img id="profile-image" src="" alt="Profile Image" /></div> 
+
 <body class="container">
   <!-- Pembuat code: https://codepen.io/mdusmanansari/pen/BamepLe -->
 
-  <audio id="birthday-audio" src="path/to/your/audio-file.mp3" preload="auto"></audio>
+  <audio id="birthday-audio" src="hbd.mp3" preload="auto" autoplay loop></audio>
   
     <div class="night"></div>
     
+  
+
  <!-- Birthday Message Section -->
  <div class="birthday-message">
   <div class="message-container">
@@ -494,6 +551,31 @@
 
 
     <script>
+
+const images = [
+            'img1.jpg',
+            'img2.jpg',
+            'img3.jpg',
+            'img4.jpg',
+            'img5.webp'
+        ];
+
+        const profileImage = document.getElementById('profile-image');
+        let currentIndex = 0;
+
+        // Function to change the image
+        function changeImage() {
+            profileImage.src = images[currentIndex];
+            currentIndex = (currentIndex + 1) % images.length; // Loop through images
+        }
+
+        // Change image every 3 seconds
+        setInterval(changeImage, 3000);
+
+        // Initially set the first image
+        changeImage();
+
+
       // Configuration
       const config = {
         windSpeed: 5,
@@ -529,10 +611,11 @@
         "Make it a wild ride filled with unforgettable memories! 📸",
         "You're a beautiful and talented queen 👑, and you deserve all the happiness in the world.",
         "May your year be sprinkled with fun, laughter, and a dash of craziness! 💃",
-        "So here's to you, Njodzeven! 🥂",
+        "So here's to you, Shakin! 🥂",
         "May your year ahead be as fabulous as your favorite playlist! 🎶",
         "Let's make some epic memories together!",
-        "With all my love and a ton of confetti 🎊"
+        "With all my love and a ton of confetti 🎊 and a never-ending supply of good vibes!",
+        "Your loving friend Goldsmith💞"
       ];
 
       // Initialize
@@ -699,9 +782,9 @@
           if (leaf.isFestive) {
             // Create a small pulsating effect for festive leaves
             const scale = 1 + Math.sin(Date.now() / 500) * 0.1;
-            leaf.element.style.transform = `translate(${leaf.x}px, ${leaf.y}px) rotate(${leaf.rotation}deg) scale(${scale})`;
+            leaf.element.style.transform = `translate(${leaf.x/2}px, ${leaf.y}px) rotate(${leaf.rotation}deg) scale(${scale})`;
           } else {
-            leaf.element.style.transform = `translate(${leaf.x}px, ${leaf.y}px) rotate(${leaf.rotation}deg)`;
+            leaf.element.style.transform = `translate(${leaf.x/2}px, ${leaf.y}px) rotate(${leaf.rotation}deg)`;
           }
           
           // Reset leaf if it goes out of view
@@ -789,6 +872,7 @@ window.addEventListener('load', () => {
         console.error('Audio playback failed:', error);
     });
 });
+
 
     </script>
   </body>
