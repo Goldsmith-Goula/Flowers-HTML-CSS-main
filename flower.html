@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="img/flowers.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Happy Birthday!</title>
+    
+
+    <style>
+    
+
+      /* Birthday Message Section */
+      .birthday-message {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 330px;
+        text-align: center;
+        z-index: 1000;
+      }
+
+      .message-container {
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(248, 173, 185, 0.7);
+        border: 2px solid rgba(255, 192, 203, 0.5);
+        animation: glow 1.5s infinite alternate;
+      }
+
+      @keyframes glow {
+    0% {
+       
+        box-shadow: 0 0 20px rgba(250, 151, 168, 0.7);
+    }
+    100% {
+       
+        box-shadow: 0 0 25px rgba(222, 141, 155, 0.9);
+    }
+}
+
+      .typewriter-text {
+        display: inline-block;
+        font-family: 'Dancing Script', cursive;
+        color: #fdb9c3;
+        font-size: 1.6rem;
+        line-height: 1.6;
+        min-height: 120px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .typewriter-cursor {
+        display: inline-block;
+        width: 2px;
+        height: 1.4rem;
+        background-color: #ffb6c1;
+        margin-left: 2px;
+        animation: blink 0.7s infinite;
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      .gscene {
+          position: relative;
+          background: transparent;
+          display: none;
+          width: 100%;
+          height: 100%;
+      }
+
+      .gground {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 25%;
+          background: linear-gradient(to bottom, #8BC34A, #689F38);
+      }
+
+      .gtree {
+          position: absolute;
+          bottom: 25%;
+          left: 15%;
+          width: 50px;
+          height: 200px;
+          background: linear-gradient(to top, #5D4037, #795548);
+      }
+
+      .gtree-crown {
+          position: absolute;
+          bottom: calc(25% + 180px);
+          left: calc(15% - 75px);
+          width: 200px;
+          height: 200px;
+          background: linear-gradient(to top, #4CAF50, #81C784);
+          border-radius: 50% 50% 50% 50%;
+      }
+
+      .gcontrols {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          background-color: rgba(255, 255, 255, 0.7);
+          padding: 15px;
+          border-radius: 10px;
+          z-index: 1000;
+      }
+
+      .gslider-container {
+          margin-bottom: 10px;
+      }
+
+      label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+      }
+
+      .gleaf {
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          background-color: #4CAF50;
+          opacity: 0.8;
+          border-radius: 50% 0 50% 50%;
+          transform: rotate(45deg);
+          z-index: 100;
+      }
+
+      .gleaf:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: inherit;
+          border-radius: 50% 50% 50% 0;
+          transform: rotate(45deg);
+      }
+
+      .gcloud {
+          position: absolute;
+          background: white;
+          border-radius: 50px;
+          opacity: 0.8;
+          z-index: 5;
+      }
+      </style>
+</head>
+<body class="container">
+  <!-- Pembuat code: https://codepen.io/mdusmanansari/pen/BamepLe -->
+
+  <audio id="birthday-audio" src="path/to/your/audio-file.mp3" preload="auto"></audio>
+  
+    <div class="night"></div>
+    
+ <!-- Birthday Message Section -->
+ <div class="birthday-message">
+  <div class="message-container">
+    <div class="typewriter-text"></div>
+    <div class="typewriter-cursor"></div>
+  </div>
+</div>
+
+
+    <div class="flowers">
+       <!-- leaves -->
+
+     <div class="gscene">
+      <div class="gcontrols">
+          <div class="gslider-container">
+              <label for="wind-speed">Wind Speed</label>
+              <input type="range" id="wind-speed" min="1" max="10" value="5" class="gslider">
+          </div>
+          <div class="gslider-container">
+              <label for="leaf-count">Leaf Count</label>
+              <input type="range" id="leaf-count" min="10" max="100" value="50" class="gslider">
+          </div>
+          <button id="reset-btn">Reset Animation</button>
+      </div>
+     
+  </div>
+  
+      <div class="flower flower--1">
+        <div class="flower__leafs flower__leafs--1">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+  
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+  
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+          <div class="flower__line__leaf flower__line__leaf--5"></div>
+          <div class="flower__line__leaf flower__line__leaf--6"></div>
+        </div>
+      </div>
+  
+      <div class="flower flower--2">
+        <div class="flower__leafs flower__leafs--2">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+  
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+  
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+  
+      <div class="flower flower--3">
+        <div class="flower__leafs flower__leafs--3">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+  
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+  
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+  
+      <div class="grow-ans" style="--d:1.2s">
+        <div class="flower__g-long">
+          <div class="flower__g-long__top"></div>
+          <div class="flower__g-long__bottom"></div>
+        </div>
+      </div>
+  
+      <div class="growing-grass">
+        <div class="flower__grass flower__grass--1">
+          <div class="flower__grass--top"></div>
+          <div class="flower__grass--bottom"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+          <div class="flower__grass__overlay"></div>
+        </div>
+      </div>
+  
+      <div class="growing-grass">
+        <div class="flower__grass flower__grass--2">
+          <div class="flower__grass--top"></div>
+          <div class="flower__grass--bottom"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+          <div class="flower__grass__overlay"></div>
+        </div>
+      </div>
+  
+      <div class="grow-ans" style="--d:2.4s">
+        <div class="flower__g-right flower__g-right--1">
+          <div class="leaf"></div>
+        </div>
+      </div>
+  
+      <div class="grow-ans" style="--d:2.8s">
+        <div class="flower__g-right flower__g-right--2">
+          <div class="leaf"></div>
+        </div>
+      </div>
+  
+      <div class="grow-ans" style="--d:2.8s">
+        <div class="flower__g-front">
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__line"></div>
+        </div>
+      </div>
+  
+      <div class="grow-ans" style="--d:3.2s">
+        <div class="flower__g-fr">
+          <div class="leaf"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
+        </div>
+      </div>
+  
+      <div class="long-g long-g--0">
+        <div class="grow-ans" style="--d:3s">
+          <div class="leaf leaf--0"></div>
+        </div>
+        <div class="grow-ans" style="--d:2.2s">
+          <div class="leaf leaf--1"></div>
+        </div>
+        <div class="grow-ans" style="--d:3.4s">
+          <div class="leaf leaf--2"></div>
+        </div>
+        <div class="grow-ans" style="--d:3.6s">
+          <div class="leaf leaf--3"></div>
+        </div>
+      </div>
+  
+      <div class="long-g long-g--1">
+        <div class="grow-ans" style="--d:3.6s">
+          <div class="leaf leaf--0"></div>
+        </div>
+        <div class="grow-ans" style="--d:3.8s">
+          <div class="leaf leaf--1"></div>
+        </div>
+        <div class="grow-ans" style="--d:4s">
+          <div class="leaf leaf--2"></div>
+        </div>
+        <div class="grow-ans" style="--d:4.2s">
+          <div class="leaf leaf--3"></div>
+        </div>
+      </div>
+  
+      <div class="long-g long-g--2">
+        <div class="grow-ans" style="--d:4s">
+          <div class="leaf leaf--0"></div>
+        </div>
+        <div class="grow-ans" style="--d:4.2s">
+          <div class="leaf leaf--1"></div>
+        </div>
+        <div class="grow-ans" style="--d:4.4s">
+          <div class="leaf leaf--2"></div>
+        </div>
+        <div class="grow-ans" style="--d:4.6s">
+          <div class="leaf leaf--3"></div>
+        </div>
+      </div>
+  
+      <div class="long-g long-g--3">
+        <div class="grow-ans" style="--d:4s">
+          <div class="leaf leaf--0"></div>
+        </div>
+        <div class="grow-ans" style="--d:4.2s">
+          <div class="leaf leaf--1"></div>
+        </div>
+        <div class="grow-ans" style="--d:3s">
+          <div class="leaf leaf--2"></div>
+        </div>
+        <div class="grow-ans" style="--d:3.6s">
+          <div class="leaf leaf--3"></div>
+        </div>
+      </div>
+  
+      <div class="long-g long-g--4">
+        <div class="grow-ans" style="--d:4s">
+          <div class="leaf leaf--0"></div>
+        </div>
+        <div class="grow-ans" style="--d:4.2s">
+          <div class="leaf leaf--1"></div>
+        </div>
+        <div class="grow-ans" style="--d:3s">
+          <div class="leaf leaf--2"></div>
+        </div>
+        <div class="grow-ans" style="--d:3.6s">
+          <div class="leaf leaf--3"></div>
+        </div>
+      </div>
+  
+      <div class="long-g long-g--5">
+        <div class="grow-ans" style="--d:4s">
+          <div class="leaf leaf--0"></div>
+        </div>
+        <div class="grow-ans" style="--d:4.2s">
+          <div class="leaf leaf--1"></div>
+        </div>
+        <div class="grow-ans" style="--d:3s">
+          <div class="leaf leaf--2"></div>
+        </div>
+        <div class="grow-ans" style="--d:3.6s">
+          <div class="leaf leaf--3"></div>
+        </div>
+      </div>
+  
+      <div class="long-g long-g--6">
+        <div class="grow-ans" style="--d:4.2s">
+          <div class="leaf leaf--0"></div>
+        </div>
+        <div class="grow-ans" style="--d:4.4s">
+          <div class="leaf leaf--1"></div>
+        </div>
+        <div class="grow-ans" style="--d:4.6s">
+          <div class="leaf leaf--2"></div>
+        </div>
+        <div class="grow-ans" style="--d:4.8s">
+          <div class="leaf leaf--3"></div>
+        </div>
+      </div>
+  
+      <div class="long-g long-g--7">
+        <div class="grow-ans" style="--d:3s">
+          <div class="leaf leaf--0"></div>
+        </div>
+        <div class="grow-ans" style="--d:3.2s">
+          <div class="leaf leaf--1"></div>
+        </div>
+        <div class="grow-ans" style="--d:3.5s">
+          <div class="leaf leaf--2"></div>
+        </div>
+        <div class="grow-ans" style="--d:3.6s">
+          <div class="leaf leaf--3"></div>
+        </div>
+      </div>
+
+
+     
+
+    </div>
+    <script src="main.js"></script>
+
+
+    <script>
+      // Configuration
+      const config = {
+        windSpeed: 5,
+        leafCount: 50,
+         festiveLeafCount: 200,
+        leaves: [],
+        clouds: [],
+        cloudCount: 5,
+        animationId: null
+      };
+
+      // DOM Elements
+      const scene = document.querySelector('.night');
+      const typewriterText = document.querySelector('.typewriter-text');
+      const typewriterCursor = document.querySelector('.typewriter-cursor');
+
+      // Birthday message chunks for typewriter effect
+      const birthdayMessage = [
+        "Dearest Njodzeven,",
+        "🎉 Happy 20th Birthday! 🎂",
+        "Wow, you've officially left your teenage years behind! 🚀",
+        "Welcome to your twenties, where the fun really begins! 🎈",
+        "May your day be filled with cake, laughter, and all the things that make you smile! 😄",
+        "\"Count your life by smiles, not tears. Count your age by friends, not years.\"",
+        "And let me tell you, you've got a whole squad of amazing friends who adore you! 🥳",
+        "\"A wish for you on your birthday: whatever you ask, may you receive; whatever you seek, may you find; whatever you wish, may it be fulfilled.\"",
+        "So, if you're wishing for a lifetime supply of chocolate 🍫 or endless pizza 🍕, I'm here for it!",
+        "May this year be packed with adventures, laughter, and maybe a little bit of mischief! 😜",
+        "Remember, \"Another adventure-filled year awaits you. Welcome it by celebrating your birthday with pomp and splendor!\"",
+        "So, let's party like there's no tomorrow! 🎊",
+        "As you turn 20, embrace the journey ahead like a rollercoaster ride—hold on tight and enjoy every twist and turn! 🎢",
+        "\"Your birthday is the first day of another 365-day journey.\"",
+        "Make it a wild ride filled with unforgettable memories! 📸",
+        "You're a beautiful and talented queen 👑, and you deserve all the happiness in the world.",
+        "May your year be sprinkled with fun, laughter, and a dash of craziness! 💃",
+        "So here's to you, Njodzeven! 🥂",
+        "May your year ahead be as fabulous as your favorite playlist! 🎶",
+        "Let's make some epic memories together!",
+        "With all my love and a ton of confetti 🎊"
+      ];
+
+      // Initialize
+      function init() {
+        createClouds();
+        createLeaves(config.leafCount);
+        animate();
+        startTypewriterEffect();
+        
+        // Make leaves more festive with birthday colors
+        createBirthdayLeaves();
+      }
+
+      // Create clouds
+      function createClouds() {
+        for (let i = 0; i < config.cloudCount; i++) {
+          const cloud = document.createElement('div');
+          cloud.className = 'gcloud';
+          
+          // Random cloud properties
+          const width = Math.random() * 150 + 100;
+          const height = width * 0.6;
+          const top = Math.random() * 20;
+          const left = Math.random() * 100;
+          
+          cloud.style.width = width + 'px';
+          cloud.style.height = height + 'px';
+          cloud.style.top = top + '%';
+          cloud.style.left = left + '%';
+          
+          // Store cloud data
+          const cloudData = {
+            element: cloud,
+            speed: Math.random() * 0.05 + 0.02,
+            position: left
+          };
+          
+          config.clouds.push(cloudData);
+          scene.appendChild(cloud);
+        }
+      }
+
+      // Create regular leaves
+      function createLeaves(count) {
+        // First remove any existing leaves
+        config.leaves.forEach(leaf => {
+          if (leaf.element && leaf.element.parentNode) {
+            leaf.element.parentNode.removeChild(leaf.element);
+          }
+        });
+        
+        config.leaves = [];
+        
+        for (let i = 0; i < count; i++) {
+          createLeaf();
+        }
+      }
+
+      // Create festive birthday-colored leaves
+      function createBirthdayLeaves() {
+        const birthdayColors = ['#ffb6c1', '#ffd700', '#ff69b4', '#9370db', '#ff7f50', '#00bfff'];
+        const count = 100; // Additional festive leaves
+        
+        for (let i = 0; i < count; i++) {
+          const leaf = document.createElement('div');
+          leaf.className = 'gleaf';
+          
+          // Position leaves around the viewport
+          const x = Math.random() * window.innerWidth/5;
+          const y = Math.random() * window.innerHeight - 200;
+          
+          // Festive leaf properties
+          const size = Math.random() * 15 + 10;
+          const colorIndex = Math.floor(Math.random() * birthdayColors.length);
+          
+          leaf.style.width = size + 'px';
+          leaf.style.height = size + 'px';
+          leaf.style.backgroundColor = birthdayColors[colorIndex];
+          leaf.style.left = x + 'px';
+          leaf.style.top = y + 'px';
+          leaf.style.opacity = '0.6';
+          
+          // Store leaf data
+          const leafData = {
+            element: leaf,
+            x: x,
+            y: y,
+            size: size,
+            rotation: Math.random() * 360,
+            rotationSpeed: (Math.random() - 0.5) * 4,
+            fallSpeed: Math.random() * 0.7 + 0.3,
+            oscillationAmplitude: Math.random() * 3 + 1,
+            oscillationPeriod: Math.random() * 200 + 100,
+            isFestive: true
+          };
+          
+          config.leaves.push(leafData);
+          scene.appendChild(leaf);
+        }
+      }
+
+      // Create a single leaf with random properties
+      function createLeaf(initialX = null) {
+        const leaf = document.createElement('div');
+        leaf.className = 'gleaf';
+        
+        // Random starting position
+        const fromRandom = initialX === null;
+        const x = fromRandom ? Math.random() * window.innerWidth - 200 : initialX;
+        const y = fromRandom ? 0 : 0;
+        
+        // Random leaf properties
+        const size = Math.random() * 10 + 15;
+        const hue = Math.random() * 40 + 90; // greens to yellows
+        
+        leaf.style.width = size + 'px';
+        leaf.style.height = size + 'px';
+        leaf.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
+        leaf.style.left = x + 'px';
+        leaf.style.top = y + 'px';
+        
+        // Store leaf data
+        const leafData = {
+          element: leaf,
+          x: x,
+          y: y,
+          size: size,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 4,
+          fallSpeed: Math.random() * 1 + 0.5,
+          oscillationAmplitude: Math.random() * 3 + 1,
+          oscillationPeriod: Math.random() * 200 + 100,
+          isFestive: false
+        };
+        
+        config.leaves.push(leafData);
+        scene.appendChild(leaf);
+      }
+
+      // Animation loop
+      function animate() {
+        // Animate clouds
+        config.clouds.forEach(cloud => {
+          cloud.position += cloud.speed * config.windSpeed;
+          
+          // Reset cloud position when it moves out of view
+          if (cloud.position > 100) {
+            cloud.position = -30;
+          }
+          
+          cloud.element.style.left = cloud.position + '%';
+        });
+        
+        // Animate leaves
+        config.leaves.forEach(leaf => {
+          // Apply wind and gravity
+          leaf.x += Math.sin(Date.now() / leaf.oscillationPeriod) * leaf.oscillationAmplitude + config.windSpeed * 0.2;
+          leaf.y += leaf.fallSpeed;
+          
+          // Rotation
+          leaf.rotation += leaf.rotationSpeed;
+          
+          // Special effects for festive leaves
+          if (leaf.isFestive) {
+            // Create a small pulsating effect for festive leaves
+            const scale = 1 + Math.sin(Date.now() / 500) * 0.1;
+            leaf.element.style.transform = `translate(${leaf.x}px, ${leaf.y}px) rotate(${leaf.rotation}deg) scale(${scale})`;
+          } else {
+            leaf.element.style.transform = `translate(${leaf.x}px, ${leaf.y}px) rotate(${leaf.rotation}deg)`;
+          }
+          
+          // Reset leaf if it goes out of view
+          if (leaf.y > window.innerHeight || leaf.x > window.innerWidth) {
+            leaf.x = Math.random() * window.innerWidth;
+            leaf.y = -30;
+            leaf.rotation = Math.random() * 360;
+          }
+        });
+        
+        config.animationId = requestAnimationFrame(animate);
+      }
+
+      // Typewriter effect for the birthday message
+      function startTypewriterEffect() {
+        let currentMessageIndex = 0;
+        let currentCharIndex = 0;
+        let isTyping = true;
+        let currentText = '';
+        
+        function typeNextCharacter() {
+          if (currentMessageIndex >= birthdayMessage.length) {
+            currentMessageIndex = 0; // Loop back to start
+          }
+          
+          const message = birthdayMessage[currentMessageIndex];
+          
+          if (isTyping) {
+            // Typing forward
+            if (currentCharIndex < message.length) {
+              currentText += message[currentCharIndex];
+              typewriterText.innerHTML = currentText;
+              currentCharIndex++;
+              setTimeout(typeNextCharacter, 80); // Typing speed
+            } else {
+              // Pause at the end of typing before starting to delete
+              isTyping = false;
+              setTimeout(typeNextCharacter, 2000); // Pause time
+            }
+          } else {
+            // Deleting
+            if (currentCharIndex > 0) {
+              currentCharIndex--;
+              currentText = message.substring(0, currentCharIndex);
+              typewriterText.innerHTML = currentText;
+              setTimeout(typeNextCharacter, 40); // Deleting speed (faster than typing)
+            } else {
+              // Move to next message
+              isTyping = true;
+              currentMessageIndex++;
+              currentText = '';
+              setTimeout(typeNextCharacter, 500); // Pause before next message
+            }
+          }
+        }
+        
+        // Start the typewriter effect
+        typeNextCharacter();
+      }
+
+      // Handle window resize
+      function handleResize() {
+        // Reset leaf positions on window resize for better responsiveness
+        config.leaves.forEach(leaf => {
+          if (!leaf.isFestive) {
+            leaf.x = Math.random() * window.innerWidth;
+            leaf.y = Math.random() * window.innerHeight;
+            leaf.element.style.transform = `translate(${leaf.x}px, ${leaf.y}px) rotate(${leaf.rotation}deg)`;
+          }
+        });
+      }
+
+      // Event Listeners
+      window.addEventListener('resize', handleResize);
+      
+      // Start the animation when the page loads
+      window.addEventListener('load', init);
+
+
+// Play audio on page load
+const audio = document.getElementById('birthday-audio');
+
+window.addEventListener('load', () => {
+    audio.play().catch(error => {
+        console.error('Audio playback failed:', error);
+    });
+});
+
+    </script>
+  </body>
+</html>
